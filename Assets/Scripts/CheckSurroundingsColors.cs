@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CheckSurroundingsColors : MonoBehaviour
 {
-    public Component[] adjacentSprites;
-    public Color curColor;
+    [SerializeField] Component[] adjacentSprites;
+    [SerializeField] Color curColor;
     public bool isPieceUnique = false;
 
     void Start()
@@ -23,12 +23,10 @@ public class CheckSurroundingsColors : MonoBehaviour
     {
         if(ColorUtility.ToHtmlStringRGB(curColor) != "FFFFFF" && surroundingsUnique(adjacentSprites))
         {
-            Debug.Log("Setting bool to true");
             isPieceUnique = true;
         }
         else
         {
-            Debug.Log("Setting bool to false");
             isPieceUnique = false;
         }
     }

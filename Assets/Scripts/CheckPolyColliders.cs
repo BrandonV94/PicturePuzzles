@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckPolyColliders : MonoBehaviour
 {
-    public Component[] sprites;
+    [SerializeField] Component[] sprites;
 
     void Start()
     {
