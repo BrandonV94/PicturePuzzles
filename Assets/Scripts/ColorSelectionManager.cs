@@ -22,14 +22,13 @@ public class ColorSelectionManager : MonoBehaviour
             {
                 // Gets the sprite renderer components from the sprite selected.
                 SpriteRenderer sp = hit.collider.gameObject.GetComponent<SpriteRenderer>();
-                //Debug.Log(hit.collider.name);
 
                 sp.color = curColor;
             }
         }
     }
 
-    public void paint(int colorCode)
+    public void Paint(int colorCode)
     {
         colorCount = colorCode;
     }

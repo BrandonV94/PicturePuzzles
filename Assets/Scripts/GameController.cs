@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] GameObject mainImage;
     [SerializeField] GameObject[] gamePieces;
     [SerializeField] bool isGameComplete = false;
+    [SerializeField] TextMeshProUGUI congratulationsText;
 
     void Start()
     {
@@ -14,22 +16,24 @@ public class GameController : MonoBehaviour
         gamePieces = GameObject.FindGameObjectsWithTag("PlayablePiece");
     }
 
-    void Update()
-    {
-        isGameComplete = checkGameOver(gamePieces);
-    }
-
-    bool checkGameOver(GameObject[] pieces)
+    public void checkGameOver()
     {
         //Check if all piece are unique.
-        foreach (var piece in pieces)
+        foreach (var piece in gamePieces)
         {
             var unique = piece.GetComponent<CheckSurroundingsColors>();
             if (unique.isPieceUnique == false)
             {
-                return false;
+                // Flash button red to show incorrect
+                isGameComplete = false;
             }
         }
-        return true;
+        Invoke("activateCongratulationsText", 2);
+        isGameComplete = true;
+    }
+
+    void activateCongratulationsText()
+    {
+        congratulationsText.gameObject.SetActive(true);
     }
 }

@@ -16,12 +16,12 @@ public class CheckSurroundingsColors : MonoBehaviour
     void Update()
     {
         curColor = gameObject.GetComponent<SpriteRenderer>().color;
-        checkPieceIsUnique();
+        CheckPieceIsUnique();
     }
 
-    void checkPieceIsUnique()
+    void CheckPieceIsUnique()
     {
-        if(ColorUtility.ToHtmlStringRGB(curColor) != "FFFFFF" && surroundingsUnique(adjacentSprites))
+        if(ColorUtility.ToHtmlStringRGB(curColor) != "FFFFFF" && SurroundingsUnique(adjacentSprites))
         {
             isPieceUnique = true;
         }
@@ -31,7 +31,7 @@ public class CheckSurroundingsColors : MonoBehaviour
         }
     }
 
-    bool surroundingsUnique(Component[] pieces)
+    bool SurroundingsUnique(Component[] pieces)
     {
         foreach (var piece in pieces)
         {
