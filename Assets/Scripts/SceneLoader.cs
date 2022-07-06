@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField] int sceneOffSet = 2; 
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(1); // 1 = main menu scene.
@@ -19,10 +20,12 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadLevel(Button btn)
     {
-        var level = btn.name;
-        if(SceneManager.GetSceneByName(level).IsValid()) // Check to see if level is available
+        var level = btn.GetComponentInChildren<Text>().text;
+        int sceneIndex = int.Parse(level) + sceneOffSet;
+        Debug.Log("Level = " + level + "Index value = " + sceneIndex);
+        if(sceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(level);
+            SceneManager.LoadScene(sceneIndex);
         }
         else
         {

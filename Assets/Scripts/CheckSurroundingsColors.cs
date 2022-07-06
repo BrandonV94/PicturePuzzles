@@ -7,11 +7,7 @@ public class CheckSurroundingsColors : MonoBehaviour
     [SerializeField] Component[] adjacentSprites;
     [SerializeField] Color curColor;
     public bool isPieceUnique = false;
-
-    void Start()
-    {
-
-    }
+    string hexWhite = "FFFFFF";
 
     void Update()
     {
@@ -21,7 +17,7 @@ public class CheckSurroundingsColors : MonoBehaviour
 
     void CheckPieceIsUnique()
     {
-        if(ColorUtility.ToHtmlStringRGB(curColor) != "FFFFFF" && SurroundingsUnique(adjacentSprites))
+        if(ColorUtility.ToHtmlStringRGB(curColor) != hexWhite && SurroundingsUnique(adjacentSprites))
         {
             isPieceUnique = true;
         }
@@ -36,7 +32,7 @@ public class CheckSurroundingsColors : MonoBehaviour
         foreach (var piece in pieces)
         {
             if(piece.GetComponent<SpriteRenderer>().color == curColor &&
-                ColorUtility.ToHtmlStringRGB(piece.GetComponent<SpriteRenderer>().color) != "FFFFFF")
+                ColorUtility.ToHtmlStringRGB(piece.GetComponent<SpriteRenderer>().color) != hexWhite)
             {
                 return false;
             }
