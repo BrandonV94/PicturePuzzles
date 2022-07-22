@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckSurroundingColors : MonoBehaviour
+public class CheckPieces : MonoBehaviour
 {
     [SerializeField] Component[] adjacentSprites;
     [SerializeField] Color curColor;
+
+
     public bool isPieceUnique = false;
     string hexWhite = "FFFFFF";
+
 
     void Update()
     {

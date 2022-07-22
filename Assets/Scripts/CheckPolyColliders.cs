@@ -6,16 +6,17 @@ public class CheckPolyColliders : MonoBehaviour
 {
     [SerializeField] Component[] sprites;
 
-    void Start()
+    void Awake()
     {
         sprites = gameObject.transform.GetComponentsInChildren(typeof(SpriteRenderer));
 
         foreach (var sprite in sprites)
         {
-            if (sprite.GetComponent<PolygonCollider2D>() == null && sprite.name != "Main Image")
+            if (sprite.GetComponent<PolygonCollider2D>() == null && sprite.name != "Main")
             {
+                // Adds a PolygonCollider and sets the game pieces tag name to "PlayablePiece".
                 sprite.gameObject.AddComponent<PolygonCollider2D>();
-                //Debug.Log("Adding PolygonCollider2D to " + sprite.name);
+                sprite.gameObject.tag = "PlayablePiece";
             }
         }
     }
