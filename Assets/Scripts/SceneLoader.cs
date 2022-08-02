@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadLevel(Button btn)
     {
-        var level = btn.GetComponentInChildren<Text>().text;
+        var level = btn.GetComponentInChildren<TMP_Text>().text;
         int sceneIndex = int.Parse(level) + sceneOffSet;
         Debug.Log("Level = " + level + "Index value = " + sceneIndex);
         if(sceneIndex < SceneManager.sceneCountInBuildSettings)
